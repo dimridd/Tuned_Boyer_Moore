@@ -7,6 +7,8 @@ Created on Tue Apr 17 10:42:28 2018
 """
 
 #%%
+import time
+
 table = [0]*256
 rest = []
 
@@ -22,11 +24,11 @@ def bc1(pat, m):
 			
 	return table	
 
-text = "GCATCGCAGAGAGTATACAGTACG"
-pat = "GCAGAGAG"
-sigma = "ACGT"
+#text = "GCATCGCAGAGAGTATACAGTACG"
+#pat = "GCAGAGAG"
+#sigma = "ACGT"
 match = 0
-bc = bc1(pat.upper(), len(pat))	
+#bc = bc1(pat.upper(), len(pat))	
 
 
 def append(text, char, no_of_times):
@@ -80,22 +82,27 @@ def TUNEDBM(pat, m, text, n):
 	return matches	 
 		
 def main():
-	text = "GCATCGCAGAGAGTATACAGTACG"
-	pat = "GCAGAGAG"
+	#text = "GCATCGCAGAGAGTATACAGTACGG"
+	#pat = "GCAGAGAG"
 	
 	
-	print(TUNEDBM(pat, len(pat), text, len(text)))
+	with open('hi', 'r') as myfile:
+		   data=myfile.read().replace('\n', '')
+	
+	pat = "MAIKIGIN" 
+		 
+	
+	
+	text = data
+	
+	
+	
+	t1 = time.time()
+	print ('start')
 
+	print(TUNEDBM(pat, len(pat), text, len(text)))
+	t2 = time.time()
+	print ( (t2 - t1) * 1000) 
+	
 if __name__ == '__main__':
-	main()	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	main()		
